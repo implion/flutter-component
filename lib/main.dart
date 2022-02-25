@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_component/appearce/app_theme.dart';
+import 'package:flutter_component/pages/list_exp_page.dart';
+import 'package:flutter_component/view_model/data_exp.dart';
+import 'package:provider/provider.dart';
 import 'home.dart';
 
 void main() {
-  runApp(const MyApp());
+  Provider.debugCheckInvalidValueType = null;
+  runApp(
+    MultiProvider(providers: [
+      Provider<DataExp>(create: (_) => DataExp())
+    ],
+    child: const MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,10 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Component'),
+      home: ListExpPage(),
+      theme: ThemeManager.light,
     );
   }
 }

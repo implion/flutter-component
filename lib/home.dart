@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: ComponentAppBar(
         title: "Component AppBar",
-        leftButtonItem: ButtonItem(image: Icons.image),
+        rightButtonItem: ButtonItem(child: const Icon(Icons.add, size: 30)),
       ),
     );
   }
