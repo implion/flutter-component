@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class ThemeManager {
   static ThemeData get light => ThemeData(
     primaryColor: Colors.redAccent,
     highlightColor: Colors.redAccent,
     disabledColor: Colors.blueGrey,
+    backgroundColor: Colors.white,
     textTheme: const TextTheme(
       headline5: TextStyle(fontSize: 24.0),
       subtitle1: TextStyle(fontSize: 16.0),
@@ -17,11 +19,19 @@ class ThemeManager {
     ),
     buttonTheme: const ButtonThemeData(
       buttonColor: Colors.redAccent,
-
-    )
+    ),
+    cupertinoOverrideTheme: const CupertinoThemeData(
+      primaryColor: Colors.redAccent,
+    ),
   );
 
   static ThemeData get dark => ThemeData(
     primaryColor: Colors.blueGrey,
   );
+}
+
+extension AdditionThemeData on ThemeData {
+  Color get lineColor {
+    return Colors.grey;
+  }
 }

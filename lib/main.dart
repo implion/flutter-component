@@ -6,7 +6,11 @@ import 'package:provider/provider.dart';
 import 'home.dart';
 
 void main() {
-  Provider.debugCheckInvalidValueType = null;
+  final previousCheck = Provider.debugCheckInvalidValueType;
+  Provider.debugCheckInvalidValueType = <T>(T value) {
+    if (value is DataExp) return;
+    previousCheck!<T>(value);
+  };
   runApp(
     MultiProvider(providers: [
       Provider<DataExp>(create: (_) => DataExp())

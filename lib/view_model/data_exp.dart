@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 class DataExp extends ChangeNotifier {
 
-  List<int> data = [1, 2];
+  List<String> data = ["flutter component appbar", "button"];
 
-  List<int> get items => data;
+  List<String> get items => data;
 
 }
