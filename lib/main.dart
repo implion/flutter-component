@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_component/appearce/app_theme.dart';
+import 'package:flutter_component/appearance/app_theme.dart';
 import 'package:flutter_component/pages/list_exp_page.dart';
 import 'package:flutter_component/view_model/data_exp.dart';
 import 'package:provider/provider.dart';
-import 'home.dart';
 
 void main() {
   final previousCheck = Provider.debugCheckInvalidValueType;
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: ListExpPage(),
+      home: const ListExpPage(),
       theme: ThemeManager.light,
     );
   }

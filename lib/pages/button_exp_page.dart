@@ -50,7 +50,7 @@ class ButtonExpPage extends StatelessWidget {
               children: [
                 const Text('cupertion button'),
                 CupertinoButton(onPressed: () {  },
-                  child: Text('cupertion button'))
+                  child: const Text('cupertion button'))
               ],
             ),
             Row(

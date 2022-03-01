@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_component/chart_data.dart';
@@ -16,7 +14,6 @@ class ChartExpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    var historyData = chartData['historyData'] ?? [];
     // var highData = historyData?.map((e) => e['high'] ?? 0).toList() ?? [];
     return Scaffold(
         appBar: const ComponentAppBar(
@@ -30,42 +27,10 @@ class ChartExpPage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Column(children: [
                     Container(
-                      width: 600,
+                      margin: const EdgeInsets.only(top: 40),
+                      width: 300,
                       height: 300,
-                      child: Chart(
-                        data: historyData,
-                        variables: {
-                          'time': Variable(
-                              accessor: (Map value) => (value['time'] as String),
-                              scale: OrdinalScale(inflate: true)),
-                          'high': Variable(
-                              accessor: (Map value) => value['high'] as int,
-                              scale: LinearScale(min: 0, max: 200)
-                          )
-                        },
-                        elements: [
-                          LineElement(
-                              shape: ShapeAttr(
-                                  value: BasicLineShape(smooth: true)),
-                              size: SizeAttr(value: 5)),
-                          AreaElement(color: ColorAttr(value: Colors.black38), shape: ShapeAttr(
-                              value: BasicAreaShape(smooth: true))),
-                        ],
-                        axes: [Defaults.horizontalAxis, Defaults.verticalAxis],
-                        selections: {
-                          'touchMove': PointSelection(toggle: true, on: {
-                            GestureType.scaleUpdate,
-                            GestureType.tapDown,
-                            GestureType.longPressMoveUpdate
-                          }, dim: Dim.x),
-                        },
-                        tooltip: TooltipGuide(
-                            followPointer: [false, true],
-                            align: Alignment.topLeft,
-                            offset: const Offset(-20, -20)),
-                        crosshair: CrosshairGuide(followPointer: [false, true]),
-
-                      ),
+                      child: graphicData(),
                     )
                   ])),
               SingleChildScrollView(
@@ -83,7 +48,48 @@ class ChartExpPage extends StatelessWidget {
         ));
   }
 
-  List<Color> gradientColors = [
+  Chart graphicData() {
+    var historyData = chartData['historyData'] ?? [];
+    var chart = Chart(
+      data: historyData,
+      variables: {
+        'time': Variable(
+            accessor: (Map value) => (value['time'] as String),
+            scale: OrdinalScale(inflate: true, formatter: (text) => text.substring(5))
+            ),
+        'high': Variable(
+            accessor: (Map value) => value['high'] as int,
+            scale: LinearScale(min: 0, max: 200)
+        )
+      },
+      elements: [
+        LineElement(
+            shape: ShapeAttr(
+                value: BasicLineShape(smooth: true)),
+            size: SizeAttr(value: 5)),
+      ],
+      axes: [Defaults.horizontalAxis, Defaults.verticalAxis],
+      coord: RectCoord(dimCount: 2, horizontalRange: [0, 2], horizontalRangeUpdater: Defaults.horizontalRangeSignal),
+      selections: {
+        'touchMove': PointSelection(toggle: true, on: {
+          GestureType.tap,
+          GestureType.longPressMoveUpdate,
+          GestureType.scaleUpdate,
+          // GestureType.scaleStart,
+          GestureType.scroll,
+          // GestureType.scaleEnd
+        }, dim: Dim.x),
+      },
+      tooltip: TooltipGuide(
+          followPointer: [false, false],
+          align: Alignment.topLeft),
+      crosshair: CrosshairGuide(followPointer: [true, false]),
+
+    );
+    return chart;
+  }
+
+  final List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
   ];
