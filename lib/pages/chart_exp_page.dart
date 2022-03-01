@@ -75,9 +75,7 @@ class ChartExpPage extends StatelessWidget {
           GestureType.tap,
           GestureType.longPressMoveUpdate,
           GestureType.scaleUpdate,
-          // GestureType.scaleStart,
           GestureType.scroll,
-          // GestureType.scaleEnd
         }, dim: Dim.x),
       },
       tooltip: TooltipGuide(
