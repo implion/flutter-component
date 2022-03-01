@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_component/component/component_app_bar.dart';
 import 'package:flutter_component/pages/button_exp_page.dart';
+import 'package:flutter_component/pages/chart_exp_page.dart';
 import 'package:flutter_component/view_model/data_exp.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,10 @@ class ListExpPage extends StatelessWidget {
     switch (index) {
       case 1:
         page = const ButtonExpPage();
+        break;
+      case 2:
+        page = ChartExpPage();
+        break;
     }
 
     if (page != null) {
