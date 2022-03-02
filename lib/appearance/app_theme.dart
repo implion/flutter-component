@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class ThemeManager {
+  static Color primaryColor = const Color(0xff00A89f);
+
   static ThemeData get light => ThemeData(
-    primaryColor: Colors.redAccent,
+    primaryColor: primaryColor,
     highlightColor: Colors.redAccent,
-    disabledColor: Colors.blueGrey,
+    disabledColor: Colors.black26,
     backgroundColor: Colors.white,
     textTheme: const TextTheme(
       headline5: TextStyle(fontSize: 24.0),
@@ -23,6 +25,15 @@ class ThemeManager {
     cupertinoOverrideTheme: const CupertinoThemeData(
       primaryColor: Colors.redAccent,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: const TextStyle(color: Colors.black26, fontSize: 14.0, height: 1.8),
+      focusColor: primaryColor,
+      errorBorder: null,
+      focusedBorder: null,
+      hoverColor: Colors.redAccent,
+    ),
+    focusColor: primaryColor,
+
   );
 
   static ThemeData get dark => ThemeData(

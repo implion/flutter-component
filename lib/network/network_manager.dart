@@ -22,7 +22,10 @@ class NetworkManager {
     return dio.post(url)
         .asStream()
         .asBroadcastStream()
-        .map((resp) => resp.data as T);
+        .map((resp) => resp.data as T)
+        ;
 
   }
+
+
 }

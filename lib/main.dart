@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_component/appearance/app_theme.dart';
 import 'package:flutter_component/pages/list_exp_page.dart';
 import 'package:flutter_component/view_model/data_exp.dart';
+import 'package:flutter_component/view_model/login_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   final previousCheck = Provider.debugCheckInvalidValueType;
   Provider.debugCheckInvalidValueType = <T>(T value) {
     if (value is DataExp) return;
+    if (value is LoginViewModel) return;
     previousCheck!<T>(value);
   };
   runApp(
     MultiProvider(providers: [
-      Provider<DataExp>(create: (_) => DataExp())
+      Provider<DataExp>(create: (_) => DataExp()),
+      ChangeNotifierProvider<LoginViewModel>(create: (_) => LoginViewModel())
     ],
     child: const MyApp())
   );
