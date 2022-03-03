@@ -20,6 +20,24 @@ class _MyHomePageState extends State<MyHomePage> {
         title: "Component AppBar",
         rightButtonItem: ButtonItem(child: const Icon(Icons.add, size: 30)),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: const CircularNotchedRectangle(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(icon: Icon(Icons.home), onPressed: () {  },),
+            SizedBox(),
+            IconButton(icon: Icon(Icons.business), onPressed: () {  },),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {  },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

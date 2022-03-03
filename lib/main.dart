@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_component/appearance/app_theme.dart';
+import 'package:flutter_component/home.dart';
 import 'package:flutter_component/pages/list_exp_page.dart';
 import 'package:flutter_component/view_model/data_exp.dart';
 import 'package:flutter_component/view_model/login_view_model.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const ListExpPage(),
+      home: const MyHomePage(title: 'home'),
       theme: ThemeManager.light,
     );
   }

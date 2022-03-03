@@ -67,6 +67,7 @@ class LoginPage extends StatelessWidget {
         onChanged: (value) => viewModel.onPhoneChanged(value),
         controller: viewModel.phoneController,
         cursorColor: themeData.primaryColor,
+        keyboardType: TextInputType.phone,
         decoration: InputDecoration(
             alignLabelWithHint: true,
             label: const Text('手机号'),
@@ -102,6 +103,7 @@ class LoginPage extends StatelessWidget {
           onChanged: (value) => viewModel.onCodeChanged(value),
           controller: viewModel.codeController,
           cursorColor: themeData.primaryColor,
+          keyboardType: TextInputType.number,
           decoration: InputDecoration(
               alignLabelWithHint: true,
               label: const Padding(
