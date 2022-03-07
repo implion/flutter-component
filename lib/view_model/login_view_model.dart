@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 
 class LoginViewModel extends ChangeNotifier {
+
   String _phoneNum = '';
   final String _pwd = '';
   String _code = '';
@@ -14,15 +15,16 @@ class LoginViewModel extends ChangeNotifier {
   bool get loginBtnDisable => !verifyPhone(_phoneNum) ||_code.isEmpty;
   bool get isPhone => verifyPhone(_phoneNum);
   bool get canGetCode => verifyPhone(_phoneNum) && timerIdle;
+  bool get showClear => _phoneNum.isNotEmpty;
 
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _codeController = TextEditingController();
+
   String get phoneNum => _phoneNum;
   String get pwd => _pwd;
   String get code => _code;
   TextEditingController get phoneController => _phoneController;
   TextEditingController get codeController => _codeController;
-  bool get showClear => _phoneNum.isNotEmpty;
   String get getCodeText => _getCodeText;
 
   LoginViewModel();
@@ -84,6 +86,7 @@ class LoginViewModel extends ChangeNotifier {
 
   void onCodeChanged(String text) {
     _code = text;
+    notifyListeners();
   }
 
 }

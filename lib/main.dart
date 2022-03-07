@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const MyHomePage(title: 'home'),
+      home: const MyHomePage(title: '首页'),
       theme: ThemeManager.light,
     );
   }

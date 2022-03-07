@@ -11,7 +11,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LoginViewModel>(builder: (context, viewModel, widget) {
       return Scaffold(
-        appBar: const ComponentAppBar(title: '登录'),
         body: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
